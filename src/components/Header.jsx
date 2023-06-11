@@ -1,7 +1,9 @@
 import React from "react";
 import PhotoProfile from "../assets/ic_default.jpg";
+import { useSelector } from "react-redux";
 
-const Header = ({ name, role }) => {
+const Header = () => {
+  const { user } = useSelector((state) => state.auth);
   return (
     <>
       <div
@@ -13,13 +15,12 @@ const Header = ({ name, role }) => {
         </div>
         <div className="flex items-center space-x-6 ">
           <div className="flex flex-col">
-            <h1>{name}</h1>
-            <p className="font-thin text-right">{role}</p>
+            <h1>{user && user.firstName}</h1>
           </div>
           <img
-            src={PhotoProfile}
+            src={user && user.url}
             alt="Foto Profil"
-            className="rounded-full w-14 h-14"
+            className="w-12 h-12 rounded-full"
           />
         </div>
       </div>

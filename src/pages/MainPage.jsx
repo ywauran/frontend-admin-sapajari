@@ -2,13 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMe, LogOut, reset } from "../features/authSlice";
 import { HiMenuAlt3 } from "react-icons/hi";
-import { MdOutlineDashboard } from "react-icons/md";
-import { GiTeacher } from "react-icons/gi";
-import { AiOutlineUser, AiFillBook } from "react-icons/ai";
+import { MdOutlineDashboard, MdLogout } from "react-icons/md";
+import { TbSortAscendingLetters, TbCategory } from "react-icons/tb";
 import { FiFolder } from "react-icons/fi";
-import { SiGoogleclassroom } from "react-icons/si";
-import { Link, Routes, Route, useNavigate } from "react-router-dom";
+import { GoListOrdered } from "react-icons/go";
+import { NavLink, Routes, Route, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
+import DataNumber from "./numbers/DataNumber";
+import DataLetter from "./letters/DataLetter";
+import DataCategoryChallenge from "./category-challenge/DataCategoryChallenge";
+import DatChallenge from "./challenge/DataChallenge";
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -37,12 +40,12 @@ const MainPage = () => {
       icon: MdOutlineDashboard,
       isAdmin: true,
     },
-    { name: "Data Nomor", link: "/data-numbers", icon: GiTeacher },
-    { name: "Data Huruf", link: "/data-letters", icon: FiFolder },
+    { name: "Data Nomor", link: "/data-numbers", icon: GoListOrdered },
+    { name: "Data Huruf", link: "/data-letters", icon: TbSortAscendingLetters },
     {
       name: "Data Kategori Tantangan",
       link: "/data-category-challenge",
-      icon: FiFolder,
+      icon: TbCategory,
     },
     { name: "Data Tantangan", link: "/data-challenges", icon: FiFolder },
   ];
@@ -51,9 +54,9 @@ const MainPage = () => {
   return (
     <div className="flex overflow-y-hidden">
       <div
-        className={`bg-[#0e0e0e] min-h-screen ${
+        className={`bg-[#FFFFFF] min-h-screen ${
           open ? "w-72" : "w-16"
-        } duration-500 text-gray-100 px-4`}
+        } duration-500 text-black px-4`}
       >
         <div className="flex justify-end py-3">
           <HiMenuAlt3
@@ -65,12 +68,13 @@ const MainPage = () => {
         <div className="flex flex-col justify-between h-[90%]">
           <div className="relative flex flex-col gap-4 mt-4">
             {menus?.map((menu, i) => (
-              <Link
+              <NavLink
                 to={menu?.link}
                 key={i}
                 className={` ${
                   menu?.margin && "mt-5"
-                } group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md`}
+                } group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-[#F5FAFF] rounded-md`}
+                activeClassName="bg-gray-800"
               >
                 <div>{React.createElement(menu?.icon, { size: "20" })}</div>
                 <h2
@@ -90,21 +94,30 @@ const MainPage = () => {
                 >
                   {menu?.name}
                 </h2>
-              </Link>
+              </NavLink>
             ))}
           </div>
-          <button
+          <div
             onClick={() => setOpenModalLogout(true)}
-            className="text-sm  gap-3.5 font-medium p-2 bg-gray-800 rounded-md"
+            className="flex items-center gap-3.5 p-2 border-2 rounded-md cursor-pointer hover:bg-[#F5FAFF]"
           >
-            Keluar
-          </button>
+            <MdLogout />
+            <button className="text-sm font-medium ">Keluar</button>
+          </div>
         </div>
       </div>
       <div className="w-full overflow-x-hidden font-semibold text-gray-900">
         <Header />
-        <div className="w-full h-full bg-[#F5F5F9] p-4">
-          <Routes></Routes>
+        <div className="w-full h-full bg-[#FAFAFE] p-4">
+          <Routes>
+            <Route path="data-numbers" element={<DataNumber />} />
+            <Route path="data-letters" element={<DataLetter />} />
+            <Route
+              path="data-category-challenge"
+              element={<DataCategoryChallenge />}
+            />
+            <Route path="data-challenges" element={<DatChallenge />} />
+          </Routes>
         </div>
       </div>
 
