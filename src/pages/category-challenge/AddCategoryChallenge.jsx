@@ -18,7 +18,10 @@ const AddCategoryChallenge = ({ fetchData, setOpenAdd }) => {
     formData.append("description", description);
     formData.append("file", file);
     try {
-      await axios.post("http://localhost:8000/category-challenge", formData);
+      await axios.post(
+        "https://backend-sapajari-sllsn77ftq-et.a.run.app/category-challenge",
+        formData
+      );
       fetchData();
       setOpenAdd(false);
       setTitle("");

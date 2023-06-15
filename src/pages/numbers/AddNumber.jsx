@@ -18,7 +18,10 @@ const AddNumber = ({ fetchData, setAddNumber }) => {
     formData.append("description", description);
     formData.append("file", file);
     try {
-      await axios.post("http://localhost:8000/number", formData);
+      await axios.post(
+        "https://backend-sapajari-sllsn77ftq-et.a.run.app/number",
+        formData
+      );
       fetchData();
       setAddNumber(false);
       setSymbol("");

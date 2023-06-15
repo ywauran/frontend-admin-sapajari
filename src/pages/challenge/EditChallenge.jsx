@@ -13,7 +13,7 @@ const EditChallenge = ({ openModal, setOpenModal, data, fetchData }) => {
   const fetchDataCategoryChallenge = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/category-challenges"
+        "https://backend-sapajari-sllsn77ftq-et.a.run.app/category-challenges"
       );
       setDataChallenge(response.data);
       console.log(response.data);
@@ -29,7 +29,7 @@ const EditChallenge = ({ openModal, setOpenModal, data, fetchData }) => {
     formData.append("categoryChallengeId", categoryChallengeId);
     try {
       await axios.patch(
-        `http://localhost:8000/challenge/${data.uuid}`,
+        `https://backend-sapajari-sllsn77ftq-et.a.run.app/challenge/${data.uuid}`,
         formData
       );
       fetchData();

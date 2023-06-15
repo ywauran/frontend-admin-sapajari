@@ -18,7 +18,10 @@ const EditNumber = ({ openModal, setOpenModal, data, fetchData }) => {
     formData.append("description", description);
     formData.append("file", file);
     try {
-      await axios.patch(`http://localhost:8000/number/${data.uuid}`, formData);
+      await axios.patch(
+        `https://backend-sapajari-sllsn77ftq-et.a.run.app/number/${data.uuid}`,
+        formData
+      );
       fetchData();
       setSymbol("");
       setDescription("");

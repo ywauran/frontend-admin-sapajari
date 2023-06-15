@@ -18,7 +18,10 @@ const AddLetter = ({ fetchData, setOpenLetter }) => {
     formData.append("description", description);
     formData.append("file", file);
     try {
-      await axios.post("http://localhost:8000/letter", formData);
+      await axios.post(
+        "https://backend-sapajari-sllsn77ftq-et.a.run.app/letter",
+        formData
+      );
       fetchData();
       setOpenLetter(false);
       setSymbol("");

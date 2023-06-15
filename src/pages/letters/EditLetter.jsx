@@ -18,7 +18,10 @@ const EditLetter = ({ openModal, setOpenModal, data, fetchData }) => {
     formData.append("description", description);
     formData.append("file", file);
     try {
-      await axios.patch(`http://localhost:8000/letter/${data.uuid}`, formData);
+      await axios.patch(
+        `https://backend-sapajari-sllsn77ftq-et.a.run.app/letter/${data.uuid}`,
+        formData
+      );
       fetchData();
       setSymbol("");
       setDescription("");

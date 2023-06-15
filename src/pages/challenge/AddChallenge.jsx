@@ -13,7 +13,7 @@ const AddChallenge = ({ fetchData, setAdd }) => {
   const fetchDataCategoryChallenge = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/category-challenges"
+        "https://backend-sapajari-sllsn77ftq-et.a.run.app/category-challenges"
       );
       setData(response.data);
       console.log(response.data);
@@ -28,7 +28,10 @@ const AddChallenge = ({ fetchData, setAdd }) => {
     formData.append("text", teks);
     formData.append("categoryChallengeId", categoryChallengeId);
     try {
-      await axios.post("http://localhost:8000/challenge", formData);
+      await axios.post(
+        "https://backend-sapajari-sllsn77ftq-et.a.run.app/challenge",
+        formData
+      );
       fetchData();
       setAdd(false);
       setTeks("");

@@ -43,7 +43,9 @@ const DataNumber = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/numbers");
+      const response = await axios.get(
+        "https://backend-sapajari-sllsn77ftq-et.a.run.app/numbers"
+      );
       setData(response.data);
       console.log(response.data);
     } catch (error) {
@@ -53,7 +55,9 @@ const DataNumber = () => {
 
   const deleteData = async () => {
     try {
-      await axios.delete(`http://localhost:8000/number/${selectedData.uuid}`);
+      await axios.delete(
+        `https://backend-sapajari-sllsn77ftq-et.a.run.app/number/${selectedData.uuid}`
+      );
       setData((prevData) =>
         prevData.filter((item) => item.uuid !== selectedData.uuid)
       );

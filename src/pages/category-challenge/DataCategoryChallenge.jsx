@@ -44,7 +44,7 @@ const DataCategoryChallenge = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/category-challenges"
+        "https://backend-sapajari-sllsn77ftq-et.a.run.app/category-challenges"
       );
       setData(response.data);
       console.log(response.data);
@@ -56,7 +56,7 @@ const DataCategoryChallenge = () => {
   const deleteData = async () => {
     try {
       await axios.delete(
-        `http://localhost:8000/category-challenge/${selectedData.uuid}`
+        `https://backend-sapajari-sllsn77ftq-et.a.run.app/category-challenge/${selectedData.uuid}`
       );
       setData((prevData) =>
         prevData.filter((item) => item.uuid !== selectedData.uuid)

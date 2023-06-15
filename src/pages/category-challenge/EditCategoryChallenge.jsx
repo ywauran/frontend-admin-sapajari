@@ -24,7 +24,7 @@ const EditCategoryChallenge = ({
     formData.append("file", file);
     try {
       await axios.patch(
-        `http://localhost:8000/category-challenge/${data.uuid}`,
+        `https://backend-sapajari-sllsn77ftq-et.a.run.app/category-challenge/${data.uuid}`,
         formData
       );
       fetchData();

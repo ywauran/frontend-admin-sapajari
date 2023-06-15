@@ -43,7 +43,9 @@ const DataLetter = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/letters");
+      const response = await axios.get(
+        "https://backend-sapajari-sllsn77ftq-et.a.run.app/letters"
+      );
       setData(response.data);
       console.log(response.data);
     } catch (error) {
@@ -53,7 +55,9 @@ const DataLetter = () => {
 
   const deleteData = async () => {
     try {
-      await axios.delete(`http://localhost:8000/letter/${selectedData.uuid}`);
+      await axios.delete(
+        `https://backend-sapajari-sllsn77ftq-et.a.run.app/letter/${selectedData.uuid}`
+      );
       setData((prevData) =>
         prevData.filter((item) => item.uuid !== selectedData.uuid)
       );
